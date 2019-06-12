@@ -9,10 +9,11 @@ namespace Demo
     {
         static void Main(string[] args)
         {
+            var path = @"D:/tesseractResult.txt";
 			Stopwatch stopwatch = new Stopwatch();
 			stopwatch.Start();
 
-            var solutionDirectory = Directory.GetParent(Directory.GetCurrentDirectory()).FullName;
+            var solutionDirectory = @"D:\Desarrollo Local\SDKs\Tesseract OCR\How-to-use-tesseract-ocr-4.0-with-csharp";
 
             var tesseractPath = solutionDirectory + @"\tesseract-master.1153";
             var testFiles = Directory.EnumerateFiles(solutionDirectory + @"\samples");
@@ -21,8 +22,12 @@ namespace Demo
             Parallel.ForEach(testFiles, new ParallelOptions { MaxDegreeOfParallelism = maxDegreeOfParallelism }, (fileName) =>
             {
                 var imageFile = File.ReadAllBytes(fileName);
-                var text = ParseText(tesseractPath, imageFile, "eng", "fra");
+                var text = ParseText(tesseractPath, imageFile, "spa_old");
                 Console.WriteLine("File:" + fileName + "\n" + text + "\n");
+                if (!File.Exists(path))
+                {
+                    File.WriteAllText(path, text);
+                }
             });
 
 			stopwatch.Stop();
