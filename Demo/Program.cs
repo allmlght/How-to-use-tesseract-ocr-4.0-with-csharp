@@ -13,7 +13,7 @@ namespace Demo
 			Stopwatch stopwatch = new Stopwatch();
 			stopwatch.Start();
 
-            var solutionDirectory = @"D:\Desarrollo Local\SDKs\Tesseract OCR\How-to-use-tesseract-ocr-4.0-with-csharp";
+            var solutionDirectory = @"D:\Desarrollo OCR\SDKs\Tesseract OCR\How-to-use-tesseract-ocr-4.0-with-csharp";
 
             var tesseractPath = solutionDirectory + @"\tesseract-master.1153";
             var testFiles = Directory.EnumerateFiles(solutionDirectory + @"\samples");
